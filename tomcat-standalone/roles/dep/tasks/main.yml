@@ -1,4 +1,13 @@
 ---
+- name: Install libselinux-python
+  yum: name=libselinux-python
+  become: True
+  become_method: sudo
+  when: "ansible_os_family == 'RedHat'"
+  
 - name: Install java
   yum: name=java-1.8.0-openjdk
+  become: True
+  become_method: sudo
   when: "ansible_os_family == 'RedHat'"
+

@@ -1,6 +1,6 @@
 ---
 - name: restart tomcat
-  shell: cd {{ prefix }}/tomcat/ && ./bin/shutdown.sh && sleep 3 && nohup ./bin/startup.sh &
+  shell: cd {{ prefix }}/tomcat/ & ./bin/shutdown.sh & sleep 3 && nohup ./bin/startup.sh &
 
 #- name: restart iptables
 #  service: name=iptables state=restarted

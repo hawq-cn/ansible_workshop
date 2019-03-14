@@ -1,7 +1,10 @@
 ---
 
+- name: Creates prefix
+  file: path={{ es_prefix }} state=directory recurse=yes
+
 - name: Download es
-  get_url: url=https://artifacts.elastic.co/downloads/elasticsearch/ dest={{ es_prefix }}/elasticsearch-6.3.0.tar.gz
+  get_url: url=https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.3.0.tar.gz dest={{ es_prefix }}/elasticsearch-6.3.0.tar.gz
 
 - name: Extract archive
   command: chdir={{ es_prefix }} tar xvf elasticsearch-6.3.0.tar.gz -C {{ es_prefix }} creates={{ es_prefix }}/elasticsearch-6.3.0
@@ -14,4 +17,4 @@
   shell: cd {{ es_prefix }}/elasticsearch-6.3.0 && nohup ./bin/elasticsearch &
 
 - name: wait for es to start
-  wait_for: timeout=15 port={{es_port}}
+  wait_for: timeout=30 port={{es_port}}

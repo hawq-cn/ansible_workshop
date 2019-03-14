@@ -11,6 +11,12 @@
   become_method: sudo
   when: "ansible_os_family == 'RedHat'"
 
+- name: Install pip
+  yum: name=python2-pip
+  become: True
+  become_method: sudo
+  when: "ansible_os_family == 'RedHat'"
+
 - name: Install es-py lib
   pip: name=elasticsearch
   become: True

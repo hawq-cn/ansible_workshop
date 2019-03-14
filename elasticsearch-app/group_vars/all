@@ -1,0 +1,4 @@
+
+app_prefix: /tmp/app
+es_prefix: /tmp/es
+es_port: 9300

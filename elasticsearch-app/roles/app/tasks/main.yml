@@ -1,0 +1,12 @@
+---
+- name: Creates prefix
+  file: path={{ app_prefix }} state=directory recurse=yes
+
+- name: Install app
+  copy: src=es_info.py dest={{ app_prefix }} 
+
+- name: Start app
+  shell: cd {{ app_prefix }} && python es_info.py
+
+
+

@@ -1,0 +1,1 @@
+deploy some elasticsearch instances and fetch it's info (via py lib) 

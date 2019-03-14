@@ -1,0 +1,9 @@
+[es-servers]
+#hongxu-test-small
+#hongxu-test-small-2
+localhost
+
+[app-servers]
+localhost
+#hongxu-test-small
+#hongxu-test-small-2

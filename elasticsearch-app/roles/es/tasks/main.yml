@@ -1,0 +1,17 @@
+---
+
+- name: Download es
+  get_url: url=https://artifacts.elastic.co/downloads/elasticsearch/ dest={{ es_prefix }}/elasticsearch-6.3.0.tar.gz
+
+- name: Extract archive
+  command: chdir={{ es_prefix }} tar xvf elasticsearch-6.3.0.tar.gz -C {{ es_prefix }} creates={{ es_prefix }}/elasticsearch-6.3.0
+
+- name: Configure es server
+  template: src=elasticsearch.yml dest={{ es_prefix }}/elasticsearch-6.3.0/config/
+  notify: restart es
+
+- name: Start es
+  shell: cd {{ es_prefix }}/elasticsearch-6.3.0 && nohup ./bin/elasticsearch &
+
+- name: wait for es to start
+  wait_for: timeout=15 port={{es_port}}

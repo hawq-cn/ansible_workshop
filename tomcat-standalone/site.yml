@@ -4,5 +4,5 @@
 - hosts: tomcat-servers
 
   roles:
-    - selinux
+    - dep
     - tomcat
